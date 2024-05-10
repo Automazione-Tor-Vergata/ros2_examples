@@ -60,7 +60,6 @@ Image::SharedPtr CameraDriverNode::frame_to_msg(cv::Mat & frame)
   ros_image->set__step(frame.cols * frame.elemSize());
 
   // Check data endianness
-  int num = 1;
   ros_image->set__is_bigendian(false);
 
   // Copy frame data (this avoids the obsolete cv_bridge)

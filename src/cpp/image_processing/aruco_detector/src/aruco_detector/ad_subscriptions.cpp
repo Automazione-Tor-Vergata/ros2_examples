@@ -154,8 +154,8 @@ void ArucoDetectorNode::camera_callback(const Image::ConstSharedPtr & msg)
       x_err = round_space(x_err, 100.0f);
       y_err = round_space(y_err, 100.0f);
 
-      float new_x = current_pose.x + x_err;
-      float new_y = current_pose.y + y_err;
+      //float new_x = current_pose.x + x_err;
+      //float new_y = current_pose.y + y_err;
 
       //target_msg.set__position({new_x, new_y});
 
