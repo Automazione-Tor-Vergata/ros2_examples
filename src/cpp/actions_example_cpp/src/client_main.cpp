@@ -90,7 +90,7 @@ int main(int argc, char ** argv)
       exit(EXIT_FAILURE);
   }
   //! Check if the goal has been rejected
-  if (!goal_resp.get()) {
+  if (goal_resp.get() == nullptr) {
     std::cerr << "Goal rejected by server" << std::endl;
     rclcpp::shutdown();
     exit(EXIT_FAILURE);

@@ -52,7 +52,7 @@ void FibonacciClient::goal_response_clbk(
   FibonacciGoalHandleSharedPtr goal_handle)
 {
   //! Check if the handle is valid, i.e. the goal was accepted or rejected
-  if (!goal_handle) {
+  if (goal_handle == nullptr) {
     RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
   } else {
     RCLCPP_INFO(
@@ -207,12 +207,7 @@ std::shared_future<FibonacciGoalHandleSharedPtr> FibonacciClient::send_goal(
 std::shared_future<FibonacciGoalHandle::WrappedResult> FibonacciClient::request_result(
   FibonacciGoalHandleSharedPtr goal_handle)
 {
-  return client_->async_get_result(
-    goal_handle,
-    std::bind(
-      &FibonacciClient::result_callback,
-      this,
-      std::placeholders::_1));
+  return client_->async_get_result(goal_handle);
 }
 
 /**

@@ -235,7 +235,7 @@ void FibonacciComputer::compute(
  */
 void FibonacciComputer::work_activation_clbk()
 {
-  if (new_goal_) {
+  if (new_goal_ != nullptr) {
     FibonacciGoalHandleSharedPtr goal_handle = new_goal_;
     new_goal_ = nullptr;
     RCLCPP_WARN(
