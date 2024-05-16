@@ -50,7 +50,7 @@ public:
   AddTwoIntsClient();
 
   //! This is just for us, not ROS-related, i.e. we could do without it (see below)
-  void call_srv(int a, int b, AddTwoIntsClient::SharedPtr node_ptr);
+  void call_srv(int a, int b);
 
 private:
   //! This object is a modified DDS endpoint that sends requests and,

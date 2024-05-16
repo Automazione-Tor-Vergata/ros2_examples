@@ -37,8 +37,7 @@ AddTwoIntsClient::AddTwoIntsClient()
  */
 void AddTwoIntsClient::call_srv(
   int a,
-  int b,
-  AddTwoIntsClient::SharedPtr node_ptr)
+  int b)
 {
   //! Wait for the service to become available
   while (!client_->wait_for_service(std::chrono::seconds(1))) {
@@ -68,7 +67,10 @@ void AddTwoIntsClient::call_srv(
   //! In a multithreaded environment, we could just call get() on the future embedded in 'response'
   //! and trace exceptions
   //! Note: we could specify a timeout
-  if (rclcpp::spin_until_future_complete(node_ptr, response) ==
+  //! Note: the API requires a Node::SharedPtr, so we must use the shared_from_this() method of the
+  //!       Node parent class to get a shared pointer to the node;
+  //!       for reference, look for info on std::enable_shared_from_this
+  if (rclcpp::spin_until_future_complete(this->shared_from_this(), response) ==
     rclcpp::FutureReturnCode::SUCCESS)
   {
     //! To access the value, we must access the future with get()
@@ -97,7 +99,7 @@ int main(int argc, char ** argv)
   auto client_node = std::make_shared<AddTwoIntsClient>();
 
   //! Note: this time we don't spin, we just call a method offered by the node
-  client_node->call_srv(a, b, client_node);
+  client_node->call_srv(a, b);
 
   // Just exit
   rclcpp::shutdown();
