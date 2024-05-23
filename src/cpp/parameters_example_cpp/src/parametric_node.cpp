@@ -21,18 +21,6 @@
 ParametricPub::ParametricPub()
 : Node("parametric_pub")
 {
-  // Create publisher
-  num_publisher_ = this->create_publisher<Int64>(
-    "/ros2_examples/parameter",
-    rclcpp::QoS(10));
-
-  // Create timer
-  pub_timer_ = this->create_wall_timer(
-    std::chrono::milliseconds(500),
-    std::bind(
-      &ParametricPub::pub_routine,
-      this));
-
   // Register parameter set callback
   //! This traces all ROS APIs too, so must be registered first
   param_clbk_handle_ = this->add_on_set_parameters_callback(
@@ -72,6 +60,20 @@ ParametricPub::ParametricPub()
   //! since it is now a class member, and we don't need to call the middleware
   //! to retrieve the value it stores each time
   //! This also needs in-house callbacks for setting it at runtime, see below
+
+  //! Now that parameters have all been declared, you should initialize the rest of the node!
+
+  // Create publisher
+  num_publisher_ = this->create_publisher<Int64>(
+    "/ros2_examples/parameter",
+    rclcpp::QoS(10));
+
+  // Create timer
+  pub_timer_ = this->create_wall_timer(
+    std::chrono::milliseconds(500),
+    std::bind(
+      &ParametricPub::pub_routine,
+      this));
 }
 
 /**
