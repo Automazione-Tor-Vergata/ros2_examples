@@ -54,6 +54,15 @@ The component should subsequently be registered within ament with the following 
 rclcpp_components_register_nodes(pub "pub_sub_components::Publisher")
 ```
 
+Finally, you need to install your target library and header files. This is done with the complete version of the `install` command. Consider the following example, taken from the same example package:
+
+```cmake
+install(TARGETS pub
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+```
+
 ## Launch files
 
 You may add to the `LaunchDescription` a `launch_ros.actions.ComposableNodeContainer` action, which will load a component manager node in a new process. To specify which components to immediately load into it, use the `launch_ros.descriptions.ComposableNode` description. Both take arguments that are very close to what you would pass to a `Node` action.
