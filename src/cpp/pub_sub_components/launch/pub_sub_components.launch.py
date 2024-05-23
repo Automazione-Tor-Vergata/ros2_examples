@@ -12,7 +12,7 @@ from launch_ros.descriptions import ComposableNode
 
 
 def generate_launch_description():
-    """Builds a LaunchDescription for the ROS 2 USB Camera Driver app"""
+    """Builds an example of LaunchDescription for a component container."""
     ld = LaunchDescription()
 
     #! Create a ComposableNodeContainer, then add ComposableNode instances to it.
