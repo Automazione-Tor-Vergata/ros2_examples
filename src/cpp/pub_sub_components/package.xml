@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>topic_pubsub_cpp</name>
+  <name>pub_sub_components</name>
   <version>0.0.0</version>
-  <description>Topic publish/subscribe test.</description>
+  <description>Composable nodes demonstration package.</description>
   <maintainer email="robmasocco@gmail.com">Roberto Masocco</maintainer>
   <license>GPL-3.0-only</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
   <depend>std_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
