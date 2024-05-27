@@ -8,7 +8,7 @@
     camera_name: camera
     exposure: 0.0
     fps: 20
-    frame_id: map
+    frame_id: usb_camera
     image_height: 480
     image_width: 640
     is_flipped: false
